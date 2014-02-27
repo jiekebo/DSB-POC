@@ -57,7 +57,7 @@ class Train:
     self.cancelled = cancelled
 
   def toString (self) :
-    return self.trainNumber + " " + self.destinationName
+    return self.trainNumber + " " + self.destinationName + " " + self.scheduledDeparture
 
 def main () :
   stationResponse = requests.get(DANISH_STATIONS, headers=HEADERS)
@@ -76,11 +76,10 @@ def main () :
     except KeyError as e:
       print e
 
+  f = open('tmp.txt', 'w')
+
   for key, value in stations.items() :
-    print value.toString()
-
-
-
+    f.write(value.toString().encode('UTF-8'))
 
 if __name__ == '__main__' :
   main()
