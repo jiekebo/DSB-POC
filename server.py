@@ -20,8 +20,11 @@ class Station:
   def addTrain(self, train) : 
     self.trains.append(train)
 
-  def toString (self) : 
-    string = "uic " + self.uic + " name " + self.name + " trains:\n"
+  def toString (self, showTrains = False) : 
+    string = "Station: " + self.name + " UIC: " + self.uic
+    if not showTrains :
+      return string
+    string += " Trains: \n"
     for train in self.trains : 
       string += "\t" + train.toString() + "\n"
     return string
@@ -56,8 +59,21 @@ class Train:
     self.departureDelay = departureDelay
     self.cancelled = cancelled
 
-  def toString (self) :
-    return self.trainNumber + " " + self.destinationName + " " + self.scheduledDeparture
+    # Strain stations
+    self.stations = []
+
+  def addStation(self, station) : 
+    self.stations.append(station)
+
+  def toString (self, showStations = False) :
+    string = "Train: " + self.trainNumber + ", Destination: " + self.destinationName
+    if not showStations :
+      return string
+    string += " Stations: \n"
+    for station in self.stations : 
+      string += "\t" + station.toString() + "\n"
+    return string
+
 
 def main () :
   stationResponse = requests.get(DANISH_STATIONS, headers=HEADERS)
@@ -65,6 +81,7 @@ def main () :
   for station in stationResponse.json()['d'] :
     stations[station['UIC']] = Station(station['UIC'], station['Name'], station['Abbreviation'], station['CountryName'], station['CountryCode'])
 
+  trains = {}
   trainResponse = requests.get(REGIONAL_TRAINS, headers=HEADERS)
   for train in trainResponse.json()['d']:
     trainObject = Train(train['ID'], train['TrainType'], train['TrainNumber'], train['StationUic'], train['Direction'], 
@@ -73,13 +90,20 @@ def main () :
       train['MinutesToDeparture'], train['DepartureDelay'], train['Cancelled'])
     try :
       stations[train['StationUic']].addTrain(trainObject)
+      trainObject.addStation(stations[train['StationUic']])
     except KeyError as e:
       print e
+    trains[trainObject.trainNumber] = trainObject
 
-  f = open('tmp.txt', 'w')
-
+  f = open('data/stationTrains.txt', 'w')
   for key, value in stations.items() :
-    f.write(value.toString().encode('UTF-8'))
+    f.write(value.toString(True).encode('UTF-8'))
+  f.close()
+
+  f = open('data/trainStations.txt', 'w')
+  for key, value in trains.items() : 
+    f.write(value.toString(True).encode('UTF-8'))
+  f.close()
 
 if __name__ == '__main__' :
   main()
