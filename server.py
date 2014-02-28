@@ -90,10 +90,18 @@ def main () :
       train['MinutesToDeparture'], train['DepartureDelay'], train['Cancelled'])
     try :
       stations[train['StationUic']].addTrain(trainObject)
-      trainObject.addStation(stations[train['StationUic']])
     except KeyError as e:
       print e
-    trains[trainObject.trainNumber] = trainObject
+
+    try :
+      savedTrain = trains[trainObject.trainNumber]
+      savedTrain.addStation(stations[train['StationUic']])
+    except KeyError as e:
+      try: 
+        trainObject.addStation(stations[train['StationUic']])
+        trains[trainObject.trainNumber] = trainObject
+      except KeyError as e:
+        print e
 
   f = open('data/stationTrains.txt', 'w')
   for key, value in stations.items() :
