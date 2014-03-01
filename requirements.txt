@@ -1,1 +1,2 @@
 requests==2.2.1
+py2neo==1.6.3
