@@ -1,7 +1,9 @@
-#!/usr/local/bin/python
+#!/usr/bin/python
 
 import requests
 import json
+from datetime import datetime
+import re
 
 REGIONAL_TRAINS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$filter=TrainType ne 'S-tog'"
 DANISH_STATIONS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Station()?$filter=CountryCode eq '86'"
@@ -60,18 +62,26 @@ class Train:
     self.cancelled = cancelled
 
     # Strain stations
-    self.stations = []
+    self.stations = {}
 
-  def addStation(self, station) : 
-    self.stations.append(station)
+  def addStation(self, time, station) : 
+    self.stations[time] = station
+
+  def _convertTimestamp (self, str) :
+    timestamp = re.findall('\d+', str)
+    return datetime.fromtimestamp(int(timestamp[0])/1000)
 
   def toString (self, showStations = False) :
     string = "Train: " + self.trainNumber + ", Destination: " + self.destinationName
     if not showStations :
       return string
     string += " Stations: \n"
-    for station in self.stations : 
-      string += "\t" + station.toString() + "\n"
+    for key in sorted(self.stations.iterkeys()) : 
+      if key == None :
+        #string += "\t" + .toString() + "\n"
+        pass
+      else :
+        string += "\t" + self._convertTimestamp(key).strftime("%Y-%m-%d %H:%M:%S") + " - " + self.stations[key].toString() + "\n"
     return string
 
 
@@ -95,10 +105,10 @@ def main () :
 
     try :
       savedTrain = trains[trainObject.trainNumber]
-      savedTrain.addStation(stations[train['StationUic']])
+      savedTrain.addStation(trainObject.scheduledArrival, stations[trainObject.stationUic])
     except KeyError as e:
       try: 
-        trainObject.addStation(stations[train['StationUic']])
+        trainObject.addStation(trainObject.scheduledArrival, stations[trainObject.stationUic])
         trains[trainObject.trainNumber] = trainObject
       except KeyError as e:
         print e
