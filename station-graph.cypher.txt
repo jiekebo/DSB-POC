@@ -1,3 +1,5 @@
+MATCH (a:Station) OPTIONAL MATCH (a)-[r]-() DELETE a,r
+
 MATCH (n) RETURN n
 
 CREATE (Trustrup:Station {name:'Trustrup', UIC: '8600162'})
@@ -191,7 +193,7 @@ CREATE (Frederikssund:Station {name:'Frederikssund', UIC: '8600714'})
 CREATE (Tølløse:Station {name:'Tølløse', UIC: '8600717'})
 CREATE (Hviding:Station {name:'Hviding', UIC: '8600424'})
 CREATE (Hjørring:Station {name:'Hjørring', UIC: '8600009'})
-CREATE (VeksøStation {name:'Veks·', UIC: '8600710'})
+CREATE (Veksø:Station {name:'Veksø', UIC: '8600710'})
 CREATE (Hjallese:Station {name:'Hjallese', UIC: '8600559'})
 CREATE (Ølstykke:Station {name:'Ølstykke', UIC: '8600712'})
 CREATE (Kvissel:Station {name:'Kvissel', UIC: '8600005'})
@@ -301,3 +303,6 @@ CREATE (Gedser:Station {name:'Gedser', UIC: '8600830'})
 CREATE (Østerport:Station {name:'Østerport', UIC: '8600650'})
 CREATE (Taastrup:Station {name:'Taastrup', UIC: '8600620'})
 CREATE (Kildebakke:Station {name:'Kildebakke', UIC: '8600781'})
+
+CREATE
+  (Helsingør)-[:NEXT]->(Snekkersten)
