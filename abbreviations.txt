@@ -1,0 +1,489 @@
+DSB tog
+
+Lyntog  L
+InterCityLyn Nonstop  IL
+Regionaltog Øst   RØ
+Regionaltog Vest  RV
+EuroCity  EC
+EuroCity med ICED materiel  IE
+EuroNight   EN
+Øvrige Internationale tog   IP
+Skolerejsetog   FS
+Fakultative Persontog   FP
+Materieltog   M
+Fakultative materieltog   FM
+Ekstraproduktion persontog  EP
+Ekstraproduktion materieltog FE
+
+
+DSB Øresund tog
+
+Øresundsregionaltog   ØP
+Regionaltog Kystbanen   ØK
+Myldretidstog Kystbanen   ØD
+Materieltog   ØM
+Fakultative persontog   ØF
+Fakultative materieltog   ØT
+
+
+Stationsforkortelser
+
+Albertslund st  ALB
+Alken st  AK
+Allerød st  LI
+Arden st  AD
+Asnæs st  ASN
+Assedrup st   ASS
+Aulum st  UU
+Avedøre st  AVØ
+Avnede st   AVN
+Bagmarken st  BMT
+Bagsværd st   BAV
+Ballerup st   BA
+Baunhøj st  BAH
+Beder st  BED
+Bedsted Thy st  BN
+Bernstorffsvej st   BFT
+Billum st   BIM
+Birk Centerpark st  BIC
+Birkerød st   BI
+Bispebjerg st   BIT
+Bjerringbro st  BJ
+Bonnet st   BNT
+Bording st  BG
+Borris st   BS
+Borup st  BO
+Boulevarden st  BOT
+Bramming st   BM
+Brande st   BB
+Bred st   BD
+Bredebro st   BW
+Brejning st   BET
+Brødeskov st  BSK
+Brøndby Strand st   BSA
+Brøndbyøster st   BØT
+Brønderslev st  BL
+Brøns st  BRR
+Brørup st   BP
+Buddinge st   BUD
+Bunken st   BUK
+Bur st  BU
+Bækmarksbro st  BKM
+Børkop st   BK
+Charlottenlund st   CH
+Danshøj st  DAH
+Dianalund st  DIA
+Dronningmølle st  DRM
+Duemose st  DUG
+Dybbølsbro st   DBT
+Dyreby st   DY
+Dyssegård st  DYT
+Dyssekilde st   DSK
+Døstrup st (Sønderjylland)  DS
+Egedal st   EGD
+Egelund st  EG
+Egøje st  EGØ
+Ejby st   EB
+Elkærdam st   EL
+Emdrup st   EMT
+Engesvang st  EV
+Enghave st  AV
+Esbjerg st  ES
+Eskilstrup st   EK
+Espergærde st   GÆ
+Farum st  FM
+Faxe Ladeplads st   FXL
+Faxe Syd st   FXS
+Fjellenstrup st   FJG
+Flintholm st  FL
+Fredensborg st  FD
+Fredericia st   FA
+Frederikshavn st  FH
+Frederikssund st  FS
+Frederiksværk st  FRV
+Friheden st   FRH
+Frisvadvej st   FR
+Fruens Bøge st  FRS
+Fuglebakken st  FUT
+Fåre st   FRE
+Fårevejle st  FVJ
+G. Clausensvej st   GC
+Gadstrup st   GT
+Gelsted st  GD
+Gentofte st   GJ
+Gilleleje st  GLL
+Gilleleje øst st  GLØ
+Gislinge st   GSL
+Give st   GW
+Gjesing st  GJE
+Glostrup st   GL
+Glumsø st   GZ
+Godhavn st  GHG
+Gredstedbro st  GS
+Grenaa st   GR
+Greve st  GRE
+Grevinge st   GRV
+Gribsø st   GØG
+Grimstrup st  GSF
+Grubberholm st  GRH
+Grænge st   GRG
+Græsted st  GRÆ
+Græsted syd st  GRS
+Grøndal st  GHT
+Grønholt st   GRT
+Gråsten st  GST
+Guldager st   GU
+Gørding st  GØ
+Gørløse st  GØR
+Gårde st  GÅ
+Hadsten st  HA
+Hammerum st   HU
+Hanehoved st  HHF
+Harboør st  HBØ
+Hareskov st   HAR
+Haslev st   HZ
+Havdrup st  HD
+Havrebjerg st   HEB
+Hedehusene st   HH
+Hedensted st  HED
+Hee st  HE
+Hellebæk st   HEL
+Hellerup st   HL
+Helsinge st   HLG
+Helsingør st  HG
+Henne st  HNN
+Herfølge st   HF
+Herlev st   HER
+Herning Messecenter st  HRM
+Herning st  HR
+Herregårdsparken st   HGP
+Hesselmed st  HST
+Hillerød st   HI
+Himlingøje st   HMØ
+Hinnerup st   HN
+Hirtshals st  HHS
+Hjallese st   HJS
+Hjerm st  HM
+Hjortshøj st  HT
+Hjørring st   HJ
+Hobro st  HB
+Holbæk st   HK
+Holløse st  HOG
+Holme-Olstrup st  OL
+Holmstrup st  HP
+Holstebro st  HO
+Holsted st  HQ
+Holte st  HOT
+Hornbæk st  HNK
+Horne st  HON
+Horneby Sand st   HSA
+Hornslet st   OS
+Horsens st  HS
+Hovmarken st  LPT
+Hulsig st   HUL
+Humlebæk st   HUM
+Humlum st   UM
+Hundested Havn (Færge)  HVF
+Hundested st  HUN
+Hundige st  UND
+Hurup Thy st  UR
+Husum st  HUT
+Hvalsø st   HV
+Hvidbjerg st  HW
+Hviding st  VD
+Hvidovre st   HIT
+Hyllerslev st   HYV
+Højby Fyn st  HØS
+Højby Sj. st  HBS
+Høje Taastrup st  HTÅ
+Højslev st  HØ
+Højstrup st   HØP
+Høng st   ØN
+Hørdum st   HÆ
+Hørning st  HX
+Hørve st  HVE
+Hårlev st   HRL
+Ikast st  IK
+Ishøj st  IH
+Islev st  IST
+Janderup st   JAD
+Jegum st  JEG
+Jelling st  JL
+Jersie st   JSI
+Jerup st  JEU
+Jyderup st  JY
+Jyllingevej st  JYT
+Jægersborg st   JÆT
+Kalundborg st   KB
+Karinebæk st  KAB
+Karise st   KRI
+Karlslunde st   KLU
+Kauslunde st  KA
+KB Hallen st  KBN
+Kibæk st  KÆ
+Kildebakke st   KET
+Kildedal st   KID
+Kildekrog st  KIL
+Klampenborg st  KL
+Klinkby st  KLI
+Kliplev st  KW
+Klippinge st  KLP
+Knabstrup st  KS
+Kokkedal st   OK
+Kolding st  KD
+Kolind st   KO
+Kongsvang st  KVT
+Korsør st   KØ
+Kr. Eskilstrup st   KEK
+Kratbjerg st  KRB
+Kregme st   KRF
+Kvissel st  KV
+Kvistgård st  KÅ
+Kværndrup st  KVS
+København H   KH
+Københavns Lufthavn, Kastrup st   CPH
+Køge st   KJ
+Langerød st   LRT
+Langgade st   VAT
+Langå st  LG
+Laugø st  LØG
+Laven st  LA
+Lejre st  LJ
+Lem st  LM
+Lemvig st   LMV
+Lille Kregme st   LLK
+Lille Linde st  LILI
+Lille Skensved st   LW
+Lindholm st   LIH
+Lundby st   LU
+Lunde J st  LUJ
+Lunderskov st   LK
+Lyngby st   LY
+Lyngs st  LN
+Lystrup st  LP
+Løftgård st   LØT
+Løgten st   LT
+Løve st   LE
+Malling st  MAL
+Malmparken st   MPT
+Maribo st   MRB
+Marienlyst st   MAR
+Melby st  MEL
+Middelfart st   MD
+Mølleparken st  MP
+Mørdrup st  MØT
+Mørke st  MR
+Mørkøv st   MØ
+Måløv st  MW
+Mårslet st  MST
+Nakskov st  NSK
+Nivå st   NI
+Nordhavn st   NHT
+Nr. Asmindrup st  NAM
+Ny Ellebjerg st   NEL
+Ny Hagested st  HGT
+Nyborg st   NG
+Nykøbing F st   NF
+Nykøbing Sjælland st  NKS
+Nyrup st  NYP
+Næstved Nord st   NÆN
+Næstved st  NÆ
+Nørgaardsvej st   NØV
+Nørre Alslev st   NV
+Nørre Nebel st  NBL
+Nørre Åby st  NA
+Nørrebro st   NØ
+Nørreport st  KN
+Nørrevænget st  NRV
+Odder st  ODD
+Oddesund nord st  NO
+Odense st   OD
+Odense sygehus st   OSS
+Oksbøl st   OKS
+Ordrup st   OP
+Outrup st   OVT
+Padborg st  PA
+Parkvej st  PV
+Pederstrup st   PDS
+Peter Bangs Vej st  PBT
+Pårup st  PPG
+Ramme st  RAM
+Randers st  RD
+Regstrup st   RT
+Rejsby st   REJ
+Ribe Nørremark st   RBN
+Ribe st   RB
+Rimmen st   RIM
+Ringe st  RE
+Ringkøbing st   RJ
+Ringsted st   RG
+Rosenhøj st   RH
+Roskilde st   RO
+Rude Havvej st  RUH
+Rudme st  RUS
+Ruds Vedby st   RUV
+Rungsted Kyst st  RU
+Ry st   RY
+Ryde st   RYD
+Ryomgård st   RÅ
+Ryparken st   RYT
+Rødby Færge   RF
+Rødekro st  RQ
+Rødkærsbro st   RK
+Rødovre st  RDO
+Rødvig st   RDG
+Rønne/Bornholm st   RNN
+Sakskøbing st   SX
+Saltrup st  SAG
+Saunte st   SAU
+Sejstrup st   SEJ
+Sig st  IS
+Silkeborg st  SL
+Sindal st   SA
+Sjælør st   SJÆ
+Sjørring st   RI
+Skagen st   SGB
+Skalbjerg st  SC
+Skalborg st   OG
+Skanderborg st  SD
+Skellebjerg st  SKL
+Skibstrup st  SKB
+Skive st  SK
+Skjern st   SJ
+Skodsborg st  SÅ
+Skolebakken st  BAK
+Skovbrynet st   SKT
+Skovlunde st  SKO
+Skærbæk st  ÆK
+Skævinge st   SKV
+Skødstrup st (Århus)  ØDS
+Skørping st   SØ
+Slagelse st   SG
+Slotspavillonen st  SPG
+Snedsted st   SNE
+Snekkersten st  SQ
+Solrød Strand st  SOL
+Sommerland Sjælland st  SLX
+Sorgenfri st  SFT
+Sorø st   SO
+Spangsbjerg st  ESN
+Stengården st   SGT
+Stenhus st  SHT
+Stenlille st  STL
+Stenløse st   ST
+Stenstrup st  STS
+Stenstrup Syd st  SIS
+Stoholm st  SM
+Store Heddinge st   STH
+Store Merløse st  SMS
+Strandby st (Frederikshavn)   STB
+Strande st  STA
+Struer st   STR
+Studsgård st  STU
+Stæremosen st   STÆ
+Støvring st   SR
+Svanemøllen st  SAM
+Svebølle st   SE
+Svejbæk st  SV
+Svendborg st  SVG
+Svendborg vest st   SVV
+Svenstrup st (Jylland)  SN
+Svinninge st  SNG
+Sydhavn st  SYV
+Søborg st (Gilleleje)   SØB
+Søllested st  SØL
+Sønderborg st   SDB
+Sønderby st   SDBY
+Søvig Sund st   SØT
+Tarm st   TA
+Taulov st   TL
+Teglgårdsvej st   TGV
+Thisted st  TI
+Thyborøn havn st  THB
+Thyborøn st   THT
+Thyregod st   TY
+Tim st  TM
+Tinglev st  TE
+Tistrup st  TR
+Tisvildeleje st   TVL
+Tjæreborg st  TB
+Tokkerup st (Fakse)   TOK
+Tolne st  TO
+Tommerup st   TP
+Tornby st   TNB
+Torsøvej st   TOV
+Tranbjerg st  TRG
+Trekroner st  TRK
+Troldhede st  TD
+Trustrup st   TU
+Tureby st   TH
+Tølløse st  TØ
+Tønder Nord st  TRN
+Tønder st   TDR
+Tårnby st   TÅT
+Taastrup st   TÅ
+Uglev st  UL
+Ulfborg st  UF
+Ulstrup st  UP
+Valby st  VAL
+Vallensbæk st   VLB
+Vallø st  VLØ
+Vamdrup st  VM
+Vangede st  ANG
+Vanløse st  VAN
+Varde Kaserne st  VKA
+Varde Nord st   VNO
+Varde st  VA
+Varde Vest st   VAV
+Varpelev st   VAP
+Vedbæk st   VB
+Vedde st  VED
+Vejby st  VEJ
+Vejen st  VN
+Vejle st  VJ
+Vejle sygehus st  VJS
+Veksø st  VS
+Vellingshøj st  VLH
+Vemb st   VEM
+Vesterport st   VPT
+Vestre Strandalle st  VSA
+Vibehus st  VIF
+Viborg st   VG
+Viby Jylland st   VI
+Viby Sjælland st  VY
+Vidstrup st   VID
+Vig st  VIG
+Vigerslev Alle st   VGT
+Vildbjerg st  ID
+Vilhelmsborg st   VH
+Vinderup st   VP
+Vipperød st   PE
+Virum st  VIR
+Visby st  VIS
+Vojens st   OJ
+Vordingborg st  VO
+Vrist st  VRI
+Vrøgum st   VRØ
+Vrå st  VR
+Værløse st  VÆR
+Ydby st   YD
+Ølby st   ØLB
+Ølgod st  ØG
+Øllegårdsvej st   ØGV
+Ølsted st   ØLS
+Ølstykke st   ØL
+Ørby st   ØBG
+Ørestad st  ØRE
+Østbanetorvet st  ØS
+Øster Toreby st   TOR
+Østerbjerg st   ØSF
+Østerport st  KK
+Aalborg st  AB
+Aalborg Vestby st   ABV
+Ålbæk st  ÅLB
+Ålholm st   ÅLM
+Ålsgårde st   AAL
+Åmarken st  ÅM
+Aarhus H  AR
+Årslev st   ÅS
+Aarup st  AP

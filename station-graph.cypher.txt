@@ -1,7 +1,24 @@
-MATCH (a:Station) OPTIONAL MATCH (a)-[r]-() DELETE a,r
-
+//// Queries ////
+// Show complete graph
 MATCH (n) RETURN n
 
+// Following does not match on line name!?
+MATCH (nivå:Station { name:"Nivå" }),(tårnby:Station { name:"Tårnby" }),
+  p = shortestPath((nivå)-[*..15{line:"kystbanen"}]-(tårnby))
+RETURN p
+
+// Following will loop since direction goes both ways...
+MATCH (n {name:"Skodsborg"})-[*{line:"kystbanen"}]->(p) RETURN p
+
+// Delete graph
+MATCH (n)
+OPTIONAL MATCH (n)-[r]-()
+DELETE n,r
+
+
+//// Graph DDL ////
+
+// Create stations
 CREATE (Trustrup:Station {name:'Trustrup', UIC: '8600162'})
 CREATE (Kolind:Station {name:'Kolind', UIC: '8600160'})
 CREATE (Troldhede:Station {name:'Troldhede', UIC: '8600279'})
@@ -304,5 +321,39 @@ CREATE (Østerport:Station {name:'Østerport', UIC: '8600650'})
 CREATE (Taastrup:Station {name:'Taastrup', UIC: '8600620'})
 CREATE (Kildebakke:Station {name:'Kildebakke', UIC: '8600781'})
 
+// Kystbanen
 CREATE
-  (Helsingør)-[:NEXT]->(Snekkersten)
+  (Helsingør)    - [:TRACK {line:'kystbanen'}] -> (Snekkersten),
+  (Snekkersten)  - [:TRACK {line:'kystbanen'}] -> (Espergærde),
+  (Espergærde)   - [:TRACK {line:'kystbanen'}] -> (Humlebæk),
+  (Humlebæk)     - [:TRACK {line:'kystbanen'}] -> (Nivå),
+  (Nivå)         - [:TRACK {line:'kystbanen'}] -> (Kokkedal),
+  (Kokkedal)     - [:TRACK {line:'kystbanen'}] -> (RungstedKyst),
+  (RungstedKyst) - [:TRACK {line:'kystbanen'}] -> (Vedbæk),
+  (Vedbæk)       - [:TRACK {line:'kystbanen'}] -> (Skodsborg),
+  (Skodsborg)    - [:TRACK {line:'kystbanen'}] -> (Klampenborg),
+  (Klampenborg)  - [:TRACK {line:'kystbanen'}] -> (Hellerup),
+  (Hellerup)     - [:TRACK {line:'kystbanen'}] -> (Østerport),
+  (Østerport)    - [:TRACK {line:'kystbanen'}] -> (Nørreport),
+  (Nørreport)    - [:TRACK {line:'kystbanen'}] -> (KøbenhavnH),
+  (KøbenhavnH)   - [:TRACK {line:'kystbanen'}] -> (Ørestad),
+  (Ørestad)      - [:TRACK {line:'kystbanen'}] -> (Tårnby),
+  (Tårnby)       - [:TRACK {line:'kystbanen'}] -> (CPHAirport)
+
+CREATE
+  (Snekkersten)  - [:TRACK {line:'kystbanen'}] -> (Helsingør),
+  (Espergærde)   - [:TRACK {line:'kystbanen'}] -> (Snekkersten),
+  (Humlebæk)     - [:TRACK {line:'kystbanen'}] -> (Espergærde),
+  (Nivå)         - [:TRACK {line:'kystbanen'}] -> (Humlebæk),
+  (Kokkedal)     - [:TRACK {line:'kystbanen'}] -> (Nivå),
+  (RungstedKyst) - [:TRACK {line:'kystbanen'}] -> (Kokkedal),
+  (Vedbæk)       - [:TRACK {line:'kystbanen'}] -> (RungstedKyst),
+  (Skodsborg)    - [:TRACK {line:'kystbanen'}] -> (Vedbæk),
+  (Klampenborg)  - [:TRACK {line:'kystbanen'}] -> (Skodsborg),
+  (Hellerup)     - [:TRACK {line:'kystbanen'}] -> (Klampenborg),
+  (Østerport)    - [:TRACK {line:'kystbanen'}] -> (Hellerup),
+  (Nørreport)    - [:TRACK {line:'kystbanen'}] -> (Østerport),
+  (KøbenhavnH)   - [:TRACK {line:'kystbanen'}] -> (Nørreport),
+  (Ørestad)      - [:TRACK {line:'kystbanen'}] -> (KøbenhavnH),
+  (Tårnby)       - [:TRACK {line:'kystbanen'}] -> (Ørestad),
+  (CPHAirport)   - [:TRACK {line:'kystbanen'}] -> (Tårnby)
