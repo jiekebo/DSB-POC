@@ -1,4 +1,3 @@
-//// Queries ////
 // Show complete graph
 MATCH (n) RETURN n
 
@@ -10,15 +9,16 @@ RETURN p
 // Following will loop since direction goes both ways...
 MATCH (n {name:"Skodsborg"})-[*{line:"kystbanen"}]->(p) RETURN p
 
+
+
 // Delete graph
 MATCH (n)
 OPTIONAL MATCH (n)-[r]-()
 DELETE n,r
 
 
-//// Graph DDL ////
 
-// Create stations
+// Create Danish stations
 CREATE (Trustrup:Station {name:'Trustrup', UIC: '8600162'})
 CREATE (Kolind:Station {name:'Kolind', UIC: '8600160'})
 CREATE (Troldhede:Station {name:'Troldhede', UIC: '8600279'})
@@ -321,6 +321,56 @@ CREATE (Østerport:Station {name:'Østerport', UIC: '8600650'})
 CREATE (Taastrup:Station {name:'Taastrup', UIC: '8600620'})
 CREATE (Kildebakke:Station {name:'Kildebakke', UIC: '8600781'})
 
+// Create foreign stations
+CREATE (Ystad:Station {name:'Ystad', UIC: '7400028'})
+CREATE (Ängelholm:Station {name:'Ängelholm', UIC: '7400064'})
+CREATE (Skurup:Station {name:'Skurup', UIC: '7400138'})
+CREATE (Varberg:Station {name:'Varberg', UIC: '7400110'})
+CREATE (Ronneby:Station {name:'Ronneby', UIC: '7400069'})
+CREATE (Halmstad:Station {name:'Halmstad', UIC: '7400080'})
+CREATE (Växjö:Station {name:'Växjö', UIC: '7400250'})
+CREATE (Bergåsa:Station {name:'Bergåsa', UIC: '7401537'})
+CREATE (Alvesta:Station {name:'Alvesta', UIC: '7400004'})
+CREATE (Svågertorp:Station {name:'Svågertorp', UIC: '7401546'})
+CREATE (Hässleholm:Station {name:'Hässleholm', UIC: '7400006'})
+CREATE (Vinslöv:Station {name:'Vinslöv', UIC: '7400179'})
+CREATE (Göteborg:Station {name:'Göteborg', UIC: '7400002'})
+CREATE (MalmöCentral:Station {name:'Malmö Central', UIC: '7400003'})
+CREATE (Landskrona:Station {name:'Landskrona', UIC: '7400211'})
+CREATE (MölndalsNedre:Station {name:'Mölndals Nedre', UIC: '7400315'})
+CREATE (Lessebo:Station {name:'Lessebo', UIC: '7400235'})
+CREATE (HelsingborgC:Station {name:'Helsingborg C', UIC: '7400044'})
+CREATE (Älmhult:Station {name:'Älmhult', UIC: '7400045'})
+CREATE (KalmarC:Station {name:'Kalmar C', UIC: '7400020'})
+CREATE (Karlskrona:Station {name:'Karlskrona', UIC: '7400230'})
+CREATE (Svedala:Station {name:'Svedala', UIC: '7400397'})
+CREATE (Osby:Station {name:'Osby', UIC: '7400295'})
+CREATE (KristianstadC:Station {name:'Kristianstad C', UIC: '7400200'})
+CREATE (Ramlösa:Station {name:'Ramlösa', UIC: '7401270'})
+CREATE (Gunnesbo:Station {name:'Gunnesbo', UIC: '7400941'})
+CREATE (Kävlinge:Station {name:'Kävlinge', UIC: '7400945'})
+CREATE (Rydebäck:Station {name:'Rydebäck', UIC: '7401557'})
+CREATE (Hovmantorp:Station {name:'Hovmantorp', UIC: '7400511'})
+CREATE (Falkenberg:Station {name:'Falkenberg', UIC: '7400257'})
+CREATE (Lund:Station {name:'Lund', UIC: '7400120'})
+CREATE (BräkneHoby:Station {name:'Bräkne-Hoby', UIC: '7400368'})
+CREATE (Karlshamn:Station {name:'Karlshamn', UIC: '7400073'})
+CREATE (Emmaboda:Station {name:'Emmaboda', UIC: '7400096'})
+CREATE (Mörrum:Station {name:'Mörrum', UIC: '7400366'})
+CREATE (Sölvesborg:Station {name:'Sölvesborg', UIC: '7400079'})
+CREATE (Höör:Station {name:'Höör', UIC: '7400185'})
+CREATE (LaholmV:Station {name:'Laholm V', UIC: '7400058'})
+CREATE (Glumslöv:Station {name:'Glumslöv', UIC: '7401558'})
+CREATE (Bromölla:Station {name:'Bromölla', UIC: '7400141'})
+CREATE (Kattarp:Station {name:'Kattarp', UIC: '7401544'})
+CREATE (Nybro:Station {name:'Nybro', UIC: '7400189'})
+CREATE (Ödåkra:Station {name:'Ödåkra', UIC: '7401543'})
+CREATE (Kungsbacka:Station {name:'Kungsbacka', UIC: '7400161'})
+CREATE (Häljarp:Station {name:'Häljarp', UIC: '7416681'})
+CREATE (BåstadN:Station {name:'Båstad N', UIC: '7414048'})
+CREATE (Dösjebro:Station {name:'Dösjebro', UIC: '7400939'})
+CREATE (Maria:Station {name:'Maria', UIC: '7401542'})
+
 // Kystbanen
 CREATE
   (Helsingør)    - [:TRACK {line:'kystbanen'}] -> (Snekkersten),
@@ -338,22 +388,26 @@ CREATE
   (Nørreport)    - [:TRACK {line:'kystbanen'}] -> (KøbenhavnH),
   (KøbenhavnH)   - [:TRACK {line:'kystbanen'}] -> (Ørestad),
   (Ørestad)      - [:TRACK {line:'kystbanen'}] -> (Tårnby),
-  (Tårnby)       - [:TRACK {line:'kystbanen'}] -> (CPHAirport)
+  (Tårnby)       - [:TRACK {line:'kystbanen'}] -> (CPHAirport),
+  (CPHAirport)   - [:TRACK {line:'kystbanen'}] -> (Svågertorp),
+  (Svågertorp)   - [:TRACK {line:'kystbanen'}] -> (MalmöCentral)
 
 CREATE
-  (Snekkersten)  - [:TRACK {line:'kystbanen'}] -> (Helsingør),
-  (Espergærde)   - [:TRACK {line:'kystbanen'}] -> (Snekkersten),
-  (Humlebæk)     - [:TRACK {line:'kystbanen'}] -> (Espergærde),
-  (Nivå)         - [:TRACK {line:'kystbanen'}] -> (Humlebæk),
-  (Kokkedal)     - [:TRACK {line:'kystbanen'}] -> (Nivå),
-  (RungstedKyst) - [:TRACK {line:'kystbanen'}] -> (Kokkedal),
-  (Vedbæk)       - [:TRACK {line:'kystbanen'}] -> (RungstedKyst),
-  (Skodsborg)    - [:TRACK {line:'kystbanen'}] -> (Vedbæk),
-  (Klampenborg)  - [:TRACK {line:'kystbanen'}] -> (Skodsborg),
-  (Hellerup)     - [:TRACK {line:'kystbanen'}] -> (Klampenborg),
-  (Østerport)    - [:TRACK {line:'kystbanen'}] -> (Hellerup),
-  (Nørreport)    - [:TRACK {line:'kystbanen'}] -> (Østerport),
-  (KøbenhavnH)   - [:TRACK {line:'kystbanen'}] -> (Nørreport),
-  (Ørestad)      - [:TRACK {line:'kystbanen'}] -> (KøbenhavnH),
+  (MalmöCentral) - [:TRACK {line:'kystbanen'}] -> (Svågertorp),
+  (Svågertorp)   - [:TRACK {line:'kystbanen'}] -> (CPHAirport),
+  (CPHAirport)   - [:TRACK {line:'kystbanen'}] -> (Tårnby),
   (Tårnby)       - [:TRACK {line:'kystbanen'}] -> (Ørestad),
-  (CPHAirport)   - [:TRACK {line:'kystbanen'}] -> (Tårnby)
+  (Ørestad)      - [:TRACK {line:'kystbanen'}] -> (KøbenhavnH),
+  (KøbenhavnH)   - [:TRACK {line:'kystbanen'}] -> (Nørreport),
+  (Nørreport)    - [:TRACK {line:'kystbanen'}] -> (Østerport),
+  (Østerport)    - [:TRACK {line:'kystbanen'}] -> (Hellerup),
+  (Hellerup)     - [:TRACK {line:'kystbanen'}] -> (Klampenborg),
+  (Klampenborg)  - [:TRACK {line:'kystbanen'}] -> (Skodsborg),
+  (Skodsborg)    - [:TRACK {line:'kystbanen'}] -> (Vedbæk),
+  (Vedbæk)       - [:TRACK {line:'kystbanen'}] -> (RungstedKyst),
+  (RungstedKyst) - [:TRACK {line:'kystbanen'}] -> (Kokkedal),
+  (Kokkedal)     - [:TRACK {line:'kystbanen'}] -> (Nivå),
+  (Nivå)         - [:TRACK {line:'kystbanen'}] -> (Humlebæk),
+  (Humlebæk)     - [:TRACK {line:'kystbanen'}] -> (Espergærde),
+  (Espergærde)   - [:TRACK {line:'kystbanen'}] -> (Snekkersten),
+  (Snekkersten)  - [:TRACK {line:'kystbanen'}] -> (Helsingør)

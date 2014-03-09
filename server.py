@@ -7,6 +7,7 @@ import re
 
 REGIONAL_TRAINS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$filter=TrainType ne 'S-tog'"
 DANISH_STATIONS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Station()?$filter=CountryCode eq '86'"
+NON_DANISH_STATIONS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Station()?$filter=CountryCode ne '86'"
 INCIDENT_TO_CEN = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$filter=StationUic eq '8600626' and TrainType ne 'S-tog'"
 HEADERS = {'Accept': 'application/json'}
 
@@ -86,7 +87,7 @@ class Train:
 
 
 def main () :
-  stationResponse = requests.get(DANISH_STATIONS, headers=HEADERS)
+  stationResponse = requests.get(NON_DANISH_STATIONS, headers=HEADERS)
   stations = {}
   for station in stationResponse.json()['d'] :
     stations[station['UIC']] = Station(station['UIC'], station['Name'], station['Abbreviation'], station['CountryName'], station['CountryCode'])

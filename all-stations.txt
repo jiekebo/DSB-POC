@@ -1,0 +1,349 @@
+Station: Trustrup UIC: 8600162
+Station: Kolind UIC: 8600160
+Station: Hovmarken UIC: 8600164
+Station: Grenaa UIC: 8600165
+Station: Alvesta UIC: 7400004
+Station: Avedøre UIC: 8600765
+Station: Hässleholm UIC: 7400006
+Station: Sorø UIC: 8600608
+Station: Sydhavn UIC: 8600760
+Station: Sjælør UIC: 8600761
+Station: Göteborg UIC: 7400002
+Station: Malmö Central UIC: 7400003
+Station: Korsør UIC: 8600601
+Station: Hvidovre UIC: 8600600
+Station: Bergåsa UIC: 7401537
+Station: Hundige UIC: 8600769
+Station: Slagelse UIC: 8600605
+Station: Herfølge UIC: 8600805
+Station: Vigerslev All· UIC: 8600804
+Station: Haslev UIC: 8600807
+Station: Svedala UIC: 7400397
+Station: Havdrup UIC: 8600801
+Station: Gadstrup UIC: 8600800
+Station: Køge UIC: 8600803
+Station: Lille Skensved UIC: 8600802
+Station: Ordrup UIC: 8600658
+Station: Holme-Olstrup UIC: 8600809
+Station: Klampenborg UIC: 8600659
+Station: Aalborg Vestby UIC: 8600117
+Station: Lindholm UIC: 8600116
+Station: Friheden UIC: 8600764
+Station: Jelling UIC: 8600285
+Station: Vejle sygehus UIC: 8600281
+Station: Borris UIC: 8600280
+Station: Brøndby Strand UIC: 8600766
+Station: Give UIC: 8600289
+Station: Vallensbæk UIC: 8600767
+Station: Skurup UIC: 7400138
+Station: Åmarken UIC: 8600763
+Station: Ishøj UIC: 8600768
+Station: Svenstrup UIC: 8600023
+Station: Skalborg UIC: 8600022
+Station: Aalborg UIC: 8600020
+Station: Skørping UIC: 8600027
+Station: Støvring UIC: 8600026
+Station: Tønder Nord UIC: 8600434
+Station: Ribe Nørremark UIC: 8600436
+Station: Bredebro UIC: 8600430
+Station: Visby UIC: 8600431
+Station: Tønder UIC: 8600432
+Station: Höör UIC: 7400185
+Station: Tureby UIC: 8600806
+Station: Nybro UIC: 7400189
+Station: Middelfart UIC: 8600501
+Station: Kauslunde UIC: 8600502
+Station: Nørre Åby UIC: 8600503
+Station: Ejby UIC: 8600504
+Station: Gelsted UIC: 8600505
+Station: Aarup UIC: 8600506
+Station: Bred UIC: 8600507
+Station: Skalbjerg UIC: 8600508
+Station: Tommerup UIC: 8600509
+Station: Arnbjerg (Varde Sommerl) UIC: 8600250
+Station: Regstrup UIC: 8600720
+Station: Knabstrup UIC: 8600721
+Station: Mørkøv UIC: 8600722
+Station: Jyderup UIC: 8600723
+Station: Svebølle UIC: 8600724
+Station: Älmhult UIC: 7400045
+Station: Kalundborg UIC: 8600727
+Station: Osby UIC: 7400295
+Station: Ängelholm UIC: 7400064
+Station: Ronneby UIC: 7400069
+Station: Svanemøllen UIC: 8600654
+Station: Hellerup UIC: 8600655
+Station: Ryomgård UIC: 8600159
+Station: Charlottenlund UIC: 8600657
+Station: Østerport UIC: 8600650
+Station: Nordhavn UIC: 8600653
+Station: Hjortshøj UIC: 8600153
+Station: Lystrup UIC: 8600152
+Station: Torsøvej UIC: 8600151
+Station: Mørke UIC: 8600157
+Station: Hornslet UIC: 8600156
+Station: Løgten UIC: 8600155
+Station: Skødstrup st. (Århus) UIC: 8600154
+Station: Københavns Lufth. Kastrup / CPH Airport UIC: 8600858
+Station: Ørestad UIC: 8600856
+Station: Tårnby UIC: 8600857
+Station: Bromölla UIC: 7400141
+Station: Danshøj UIC: 8600742
+Station: Kibæk UIC: 8600278
+Station: Troldhede UIC: 8600279
+Station: Ikast UIC: 8600273
+Station: Engesvang UIC: 8600270
+Station: Bording UIC: 8600271
+Station: Halmstad UIC: 7400080
+Station: Studsgård UIC: 8600277
+Station: Hammerum UIC: 8600274
+Station: Herning UIC: 8600275
+Station: Fredericia UIC: 8600079
+Station: Mölndals Nedre UIC: 7400315
+Station: Brejning UIC: 8600076
+Station: Børkop UIC: 8600077
+Station: Hedensted UIC: 8600071
+Station: Vejle UIC: 8600073
+Station: Hee UIC: 8600199
+Station: Tim UIC: 8600198
+Station: Ulfborg UIC: 8600197
+Station: Vemb UIC: 8600196
+Station: Bur UIC: 8600195
+Station: Holstebro UIC: 8600192
+Station: Hjerm UIC: 8600191
+Station: Hedehusene UIC: 8600619
+Station: Trekroner UIC: 8600755
+Station: Gårde UIC: 8600209
+Station: Ølgod UIC: 8600208
+Station: Tarm UIC: 8600206
+Station: Skjern UIC: 8600205
+Station: Lem UIC: 8600203
+Station: Viby Sjælland UIC: 8600615
+Station: Roskilde UIC: 8600617
+Station: Næstved UIC: 8600810
+Station: Vordingborg UIC: 8600816
+Station: Lundby UIC: 8600814
+Station: Hillerød UIC: 8600683
+Station: Allerød UIC: 8600681
+Station: Rødovre UIC: 8600680
+Station: Vangede UIC: 8600689
+Station: Emdrup UIC: 8600688
+Station: Grøndal UIC: 8600641
+Station: Skolebakken UIC: 8600129
+Station: Padborg UIC: 8600100
+Station: Thyregod UIC: 8600290
+Station: Brande UIC: 8600291
+Station: Vildbjerg UIC: 8600298
+Station: Båstad N UIC: 7414048
+Station: Hobro UIC: 8600032
+Station: Birkerød UIC: 8600678
+Station: Snedsted UIC: 8600401
+Station: Hørdum UIC: 8600400
+Station: Sjørring UIC: 8600403
+Station: Brøndbyøster UIC: 8600679
+Station: Thisted UIC: 8600404
+Station: Svågertorp UIC: 7401546
+Station: Landskrona UIC: 7400211
+Station: Kattarp UIC: 7401544
+Station: Taastrup UIC: 8600620
+Station: Maria UIC: 7401542
+Station: Ödåkra UIC: 7401543
+Station: Hovmantorp UIC: 7400511
+Station: Fruens Bøge UIC: 8600533
+Station: Lejre UIC: 8600715
+Station: Frederikssund UIC: 8600714
+Station: Tølløse UIC: 8600717
+Station: Hvalsø UIC: 8600716
+Station: Stenløse UIC: 8600711
+Station: Veks· UIC: 8600710
+Station: Karlshamn UIC: 7400073
+Station: Ølstykke UIC: 8600712
+Station: Varde Kaserne UIC: 8600249
+Station: Sölvesborg UIC: 7400079
+Station: Vipperød UIC: 8600718
+Station: Vamdrup UIC: 8600087
+Station: Lunderskov UIC: 8600086
+Station: Taulov UIC: 8600081
+Station: Kolding UIC: 8600083
+Station: Sønderborg UIC: 8600327
+Station: Ramlösa UIC: 7401270
+Station: Gråsten UIC: 8600322
+Station: Häljarp UIC: 7416681
+Station: Dösjebro UIC: 7400939
+Station: Skodsborg UIC: 8600661
+Station: Vestre Strandalle UIC: 8600149
+Station: Rungsted Kyst UIC: 8600663
+Station: Vedbæk UIC: 8600662
+Station: Nivå UIC: 8600665
+Station: Kokkedal UIC: 8600664
+Station: Espergærde UIC: 8600667
+Station: Humlebæk UIC: 8600666
+Station: Helsingør UIC: 8600669
+Station: Snekkersten UIC: 8600668
+Station: Humlum UIC: 8600390
+Station: Uglev UIC: 8600393
+Station: Oddesund nord UIC: 8600392
+Station: Lyngs UIC: 8600395
+Station: Hvidbjerg UIC: 8600394
+Station: Hurup Thy UIC: 8600397
+Station: Ydby UIC: 8600396
+Station: Bedsted Thy UIC: 8600398
+Station: Kalmar C UIC: 7400020
+Station: Eskilstrup UIC: 8600822
+Station: Nørre Alslev UIC: 8600821
+Station: Varde Nord UIC: 8600213
+Station: Nykøbing F UIC: 8600824
+Station: Holbæk UIC: 8600719
+Station: Falkenberg UIC: 7400257
+Station: Växjö UIC: 7400250
+Station: Gunnesbo UIC: 7400941
+Station: Rydebäck UIC: 7401557
+Station: Kävlinge UIC: 7400945
+Station: Hinnerup UIC: 8600048
+Station: Egedal UIC: 8600956
+Station: Kildedal UIC: 8600955
+Station: Randers UIC: 8600040
+Station: Langå UIC: 8600044
+Station: Hadsten UIC: 8600047
+Station: Stenstrup UIC: 8600566
+Station: Stenstrup Syd UIC: 8600567
+Station: Rudme UIC: 8600564
+Station: Kværndrup UIC: 8600565
+Station: Pederstrup UIC: 8600562
+Station: Ringe UIC: 8600563
+Station: Højby Fyn UIC: 8600560
+Station: Årslev UIC: 8600561
+Station: Enghave UIC: 8600625
+Station: Valby UIC: 8600624
+Station: København H UIC: 8600626
+Station: Albertslund UIC: 8600621
+Station: Struer UIC: 8600189
+Station: Glostrup UIC: 8600622
+Station: Vinderup UIC: 8600187
+Station: Stoholm UIC: 8600180
+Station: Højslev UIC: 8600182
+Station: Skive UIC: 8600183
+Station: Tjæreborg UIC: 8600218
+Station: Bramming UIC: 8600219
+Station: Ystad UIC: 7400028
+Station: Guldager UIC: 8600214
+Station: Esbjerg UIC: 8600215
+Station: Tistrup UIC: 8600210
+Station: Sig UIC: 8600211
+Station: KB Hallen UIC: 8600740
+Station: Ålholm UIC: 8600741
+Station: Buddinge UIC: 8600690
+Station: Stengården UIC: 8600691
+Station: Bagsværd UIC: 8600692
+Station: Skovbrynet UIC: 8600693
+Station: Hareskov UIC: 8600694
+Station: Værløse UIC: 8600695
+Station: Farum UIC: 8600696
+Station: Arden UIC: 8600029
+Station: Den Permanente UIC: 8600139
+Station: Varberg UIC: 7400110
+Station: Hjørring UIC: 8600009
+Station: Bräkne-Hoby UIC: 7400368
+Station: Hjallese UIC: 8600559
+Station: Kvissel UIC: 8600005
+Station: Svendborg vest UIC: 8600555
+Station: Tolne UIC: 8600006
+Station: Frederikshavn UIC: 8600001
+Station: Svendborg UIC: 8600551
+Station: Kungsbacka UIC: 7400161
+Station: Østbanetorvet UIC: 8600148
+Station: Odense sygehus UIC: 8600526
+Station: Peter Bangs Vej UIC: 8600702
+Station: Vanløse UIC: 8600703
+Station: Langgade UIC: 8600701
+Station: Herlev UIC: 8600706
+Station: Skovlunde UIC: 8600707
+Station: Islev UIC: 8600704
+Station: Husum UIC: 8600705
+Station: Ballerup UIC: 8600708
+Station: Måløv UIC: 8600709
+Station: Kliplev UIC: 8600318
+Station: Vojens UIC: 8600091
+Station: Tinglev UIC: 8600097
+Station: Rødekro UIC: 8600094
+Station: Glumslöv UIC: 7401558
+Station: Høvelte UIC: 8600909
+Station: Høje Taastrup UIC: 8600798
+Station: Jersie UIC: 8600791
+Station: Solrød Strand UIC: 8600790
+Station: Næstved Nord UIC: 8600793
+Station: Ølby UIC: 8600792
+Station: Rødkærsbro UIC: 8600174
+Station: Viborg UIC: 8600176
+Station: Ulstrup UIC: 8600171
+Station: Bjerringbro UIC: 8600172
+Station: Glumsø UIC: 8600773
+Station: Karlslunde UIC: 8600771
+Station: Greve UIC: 8600770
+Station: Virum UIC: 8600676
+Station: Holte UIC: 8600677
+Station: Jægersborg UIC: 8600674
+Station: Lyngby UIC: 8600675
+Station: Bernstorffsvej UIC: 8600672
+Station: Gentofte UIC: 8600673
+Station: Gedser UIC: 8600830
+Station: Malmparken UIC: 8600756
+Station: Ringsted UIC: 8600611
+Station: Borup UIC: 8600614
+Station: Varde UIC: 8600212
+Station: Ringkøbing UIC: 8600200
+Station: Lund UIC: 7400120
+Station: Århus H UIC: 8600053
+Station: Døstrup Sønderjylland UIC: 8600428
+Station: Skærbæk UIC: 8600427
+Station: Brøns UIC: 8600426
+Station: Rejsby UIC: 8600425
+Station: Hviding UIC: 8600424
+Station: Ribe UIC: 8600423
+Station: Gredstedbro UIC: 8600421
+Station: Hørning UIC: 8600059
+Station: Lessebo UIC: 7400235
+Station: Karlskrona UIC: 7400230
+Station: Helsingborg C UIC: 7400044
+Station: Odense UIC: 8600512
+Station: Holmstrup UIC: 8600511
+Station: Emmaboda UIC: 7400096
+Station: Nyborg UIC: 8600518
+Station: Sorgenfri UIC: 8600636
+Station: Dybbølsbro UIC: 8600634
+Station: Gjesing st. UIC: 8600228
+Station: Bispebjerg UIC: 8600739
+Station: Laholm V UIC: 7400058
+Station: Holsted UIC: 8600221
+Station: Gørding UIC: 8600220
+Station: Vejen UIC: 8600223
+Station: Brørup UIC: 8600222
+Station: Flintholm UIC: 8600736
+Station: Spangsbjerg st. UIC: 8600227
+Station: Jyllingevej UIC: 8600734
+Station: Nørreport UIC: 8600646
+Station: Vesterport UIC: 8600645
+Station: Ryparken UIC: 8600644
+Station: Nørrebro UIC: 8600642
+Station: Europaplads UIC: 8600128
+Station: Fuglebakken UIC: 8600640
+Station: Rødby Færge UIC: 8600840
+Station: Sejstrup UIC: 8600420
+Station: Vrå UIC: 8600013
+Station: Brønderslev UIC: 8600015
+Station: Vinslöv UIC: 7400179
+Station: Kristianstad C UIC: 7400200
+Station: Sindal UIC: 8600007
+Station: Mörrum UIC: 7400366
+Station: Birk Centerpark UIC: 8600269
+Station: Aulum UIC: 8600300
+Station: Svejbæk UIC: 8600264
+Station: Silkeborg UIC: 8600266
+Station: Ry UIC: 8600261
+Station: Alken UIC: 8600260
+Station: Laven UIC: 8600263
+Station: Horsens UIC: 8600066
+Station: Skanderborg UIC: 8600061
+Station: Ny Ellebjerg UIC: 8600783
+Station: Dyssegård UIC: 8600780
+Station: Kildebakke UIC: 8600781
