@@ -7,11 +7,11 @@ import re
 
 REGIONAL_TRAINS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$filter=TrainType ne 'S-tog'"
 DANISH_STATIONS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Station()?$filter=CountryCode eq '86'"
-NON_DANISH_STATIONS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Station()?$filter=CountryCode ne '86'"
+STATIONS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Station()"
 INCIDENT_TO_CEN = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$filter=StationUic eq '8600626' and TrainType ne 'S-tog'"
 HEADERS = {'Accept': 'application/json'}
 
-class Station:
+class Station : 
   def __init__ (self, uic, name, abbreviation, countryName, countryCode) : 
     self.uic = uic
     self.name = name
@@ -62,67 +62,91 @@ class Train:
     self.departureDelay = departureDelay
     self.cancelled = cancelled
 
-    # Strain stations
-    self.stations = {}
-
-  def addStation(self, time, station) : 
-    self.stations[time] = station
-
-  def _convertTimestamp (self, str) :
+  def _convertTimestamp (self, str) : 
     timestamp = re.findall('\d+', str)
-    return datetime.fromtimestamp(int(timestamp[0])/1000)
+    return datetime.fromtimestamp(int(timestamp[0])/1000).strftime("%Y-%m-%d %H:%M:%S")
 
-  def toString (self, showStations = False) :
-    string = "Train: " + self.trainNumber + ", Destination: " + self.destinationName
-    if not showStations :
-      return string
-    string += " Stations: \n"
-    for key in sorted(self.stations.iterkeys()) : 
-      if key == None :
-        #string += "\t" + .toString() + "\n"
-        pass
-      else :
-        string += "\t" + self._convertTimestamp(key).strftime("%Y-%m-%d %H:%M:%S") + " - " + self.stations[key].toString() + "\n"
+  def toString (self, showStations = False) : 
+    arrival = ""
+    if(self.scheduledArrival) :
+      arrival = self._convertTimestamp(self.scheduledArrival)
+    string =  """Train: %s, Id: %s, Destination: %s, Type: %s, Station: %s, Arrival: %s\n""" % (self.trainNumber, self.id, self.destinationName, self.trainType, self.stationUic, arrival)
+
     return string
 
+class StationController: 
+  def __init__ (self) : 
+    stationResponse = requests.get(STATIONS, headers=HEADERS)
+    self.stations = {}
+    for station in stationResponse.json()['d'] :
+      self.stations[station['UIC']] = Station(station['UIC'], station['Name'], station['Abbreviation'], station['CountryName'], station['CountryCode'])
 
-def main () :
-  stationResponse = requests.get(NON_DANISH_STATIONS, headers=HEADERS)
-  stations = {}
-  for station in stationResponse.json()['d'] :
-    stations[station['UIC']] = Station(station['UIC'], station['Name'], station['Abbreviation'], station['CountryName'], station['CountryCode'])
+  def getStation (self, uid) : 
+    try : 
+      return self.stations[uid]
+    except KeyError as e : 
+      print e
 
-  trains = {}
-  trainResponse = requests.get(REGIONAL_TRAINS, headers=HEADERS)
-  for train in trainResponse.json()['d']:
-    trainObject = Train(train['ID'], train['TrainType'], train['TrainNumber'], train['StationUic'], train['Direction'], 
-      train['Track'], train['Line'], train['DestinationID'], train['DestinationName'], train['DestinationCountryCode'],
-      train['Generated'], train['ScheduledArrival'], train['ArrivalDelay'], train['ScheduledDeparture'],
-      train['MinutesToDeparture'], train['DepartureDelay'], train['Cancelled'])
+class TrainController : 
+  def __init__ (self) : 
+    self.trains = {}
+
+  def updateTrains (self) : 
+    trainResponse = requests.get(REGIONAL_TRAINS, headers=HEADERS)
+    updatedTrains = []
+    for train in trainResponse.json()['d'] : 
+      trainObject = Train(train['ID'], train['TrainType'], train['TrainNumber'], train['StationUic'], train['Direction'], 
+        train['Track'], train['Line'], train['DestinationID'], train['DestinationName'], train['DestinationCountryCode'],
+        train['Generated'], train['ScheduledArrival'], train['ArrivalDelay'], train['ScheduledDeparture'],
+        train['MinutesToDeparture'], train['DepartureDelay'], train['Cancelled'])
+      updatedTrains.append(trainObject.trainNumber)
+      try :
+        trainData = self.trains[trainObject.trainNumber]
+        trainData.append(trainObject)
+      except KeyError as e : 
+        self.trains[trainObject.trainNumber] = []
+        self.trains[trainObject.trainNumber].append(trainObject)
+
+    trainsForRemoval = list(set(self.trains.keys()) - set(updatedTrains))
+    for removal in trainsForRemoval : 
+      del trains[removal]
+
+  def getTrain (self, trainNumber) : 
+    return self.trains[trainNumber]
+
+  def getAllTrains (self) : 
+    return self.trains
+
+
+def main () : 
+  stationController = StationController()
+  trainController = TrainController()
+  trainController.updateTrains()
+  trainController.updateTrains()
+
+  f = open('data/trainStations.txt', 'w')
+  for key, value in trainController.getAllTrains().items() : 
+    for train in value : 
+      f.write(train.toString(False).encode('UTF-8'))
+  f.close()
+
+  """
+  try :
+    savedTrain = trains[trainObject.trainNumber]
+    savedTrain.addStation(trainObject.scheduledArrival, stations[trainObject.stationUic])
+  except KeyError as e:
     try :
-      stations[train['StationUic']].addTrain(trainObject)
+      trainObject.addStation(trainObject.scheduledArrival, stations[trainObject.stationUic])
+      trains[trainObject.trainNumber] = trainObject
     except KeyError as e:
       print e
 
-    try :
-      savedTrain = trains[trainObject.trainNumber]
-      savedTrain.addStation(trainObject.scheduledArrival, stations[trainObject.stationUic])
-    except KeyError as e:
-      try: 
-        trainObject.addStation(trainObject.scheduledArrival, stations[trainObject.stationUic])
-        trains[trainObject.trainNumber] = trainObject
-      except KeyError as e:
-        print e
 
   f = open('data/stationTrains.txt', 'w')
   for key, value in stations.items() :
     f.write(value.toString(True).encode('UTF-8'))
   f.close()
+  """
 
-  f = open('data/trainStations.txt', 'w')
-  for key, value in trains.items() : 
-    f.write(value.toString(True).encode('UTF-8'))
-  f.close()
-
-if __name__ == '__main__' :
+if __name__ == '__main__' : 
   main()
