@@ -4,6 +4,8 @@ import requests
 import json
 from datetime import datetime
 import re
+import time
+import urllib
 
 REGIONAL_TRAINS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$filter=TrainType ne 'S-tog'"
 DANISH_STATIONS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Station()?$filter=CountryCode eq '86'"
@@ -20,7 +22,7 @@ class Station :
     self.countryCode = countryCode
     self.trains = []
 
-  def addTrain(self, train) : 
+  def addTrain (self, train) : 
     self.trains.append(train)
 
   def toString (self, showTrains = False) : 
@@ -91,8 +93,22 @@ class TrainController :
   def __init__ (self) : 
     self.trains = {}
 
+  """
+  Structure:
+  trainNumber
+  -- id, trainObject
+  -- id, trainObject
+  trainNumber
+  -- id, trainObject
+  """
   def updateTrains (self) : 
-    trainResponse = requests.get(REGIONAL_TRAINS, headers=HEADERS)
+    print "requesting train data"
+    try : 
+      trainResponse = requests.get(REGIONAL_TRAINS, headers=HEADERS, timeout=1)
+    except (requests.exceptions.Timeout, urllib.error.URLError) as e :
+      return
+    print "got response for " + str(len(trainResponse.json()['d'])) + " updates"
+    
     updatedTrains = []
     for train in trainResponse.json()['d'] : 
       trainObject = Train(train['ID'], train['TrainType'], train['TrainNumber'], train['StationUic'], train['Direction'], 
@@ -101,15 +117,16 @@ class TrainController :
         train['MinutesToDeparture'], train['DepartureDelay'], train['Cancelled'])
       updatedTrains.append(trainObject.trainNumber)
       try :
-        trainData = self.trains[trainObject.trainNumber]
-        trainData.append(trainObject)
+        self.trains[trainObject.trainNumber][trainObject.id] = trainObject
       except KeyError as e : 
-        self.trains[trainObject.trainNumber] = []
-        self.trains[trainObject.trainNumber].append(trainObject)
-
+        self.trains[trainObject.trainNumber] = {}
+        self.trains[trainObject.trainNumber][trainObject.id] = trainObject
+    
+    print "total trains " + str(len(self.trains))
     trainsForRemoval = list(set(self.trains.keys()) - set(updatedTrains))
+    print "removing trains " + str(len(trainsForRemoval))
     for removal in trainsForRemoval : 
-      del trains[removal]
+      del self.trains[removal]
 
   def getTrain (self, trainNumber) : 
     return self.trains[trainNumber]
@@ -117,16 +134,16 @@ class TrainController :
   def getAllTrains (self) : 
     return self.trains
 
-
 def main () : 
   stationController = StationController()
   trainController = TrainController()
-  trainController.updateTrains()
-  trainController.updateTrains()
+  while True:
+    trainController.updateTrains()
+    time.sleep(3)
 
   f = open('data/trainStations.txt', 'w')
   for key, value in trainController.getAllTrains().items() : 
-    for train in value : 
+    for key, train in value.items() : 
       f.write(train.toString(False).encode('UTF-8'))
   f.close()
 
