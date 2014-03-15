@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+            function createGuid() {
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    var r = Math.random()*16|0, v = c === 'x' ? r : (r&0x3|0x8);
+                    return v.toString(16);
+                });
+            }
+            function connect () {
+                var ws = new WebSocket("ws://localhost:8888/ws?id="+createGuid());
+                ws.onopen = function() {
+                    ws.send("Message to send");
+                };
+                ws.onmessage = function (evt) { 
+                    var received_msg = evt.data;
+                    alert("Message is received..." + received_msg);
+                };
+                ws.onclose = function() { 
+                    alert("Connection is closed...");
+                };
+            }
+        </script>
+    </head>
+    <body onload="connect();"></body>
+</html>
