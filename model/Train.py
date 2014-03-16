@@ -44,3 +44,8 @@ class Train:
 
   def toJSON (self):
     return jsonpickle.encode(self)
+
+  def __repr__(self):
+    return "{{trainNumber:{}, id:{}}}".format(
+            self.trainNumber,
+            self.id)

@@ -1,6 +1,7 @@
 import multiprocessing
 import requests
 import time
+import sys
 
 from model.Train import Train
 
@@ -10,8 +11,10 @@ STATIONS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Statio
 INCIDENT_TO_CEN = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$filter=StationUic eq '8600626' and TrainType ne 'S-tog'"
 HEADERS = {'Accept': 'application/json'}
 
-class TrainController:
+class TrainController(multiprocessing.Process):
   def __init__ (self, queue):
+    multiprocessing.Process.__init__(self)
+    self.exit = multiprocessing.Event()
     self.trains = {}
     self._q = queue
 
@@ -23,12 +26,13 @@ class TrainController:
   trainNumber
   -- id, trainObject
   """
-  def updateTrains (self):
+  def updateTrains(self):
     print "requesting train data"
     try : 
       trainResponse = requests.get(REGIONAL_TRAINS, headers=HEADERS, timeout=1)
     except:
       print "Unexpected error:", sys.exc_info()[0]
+      return
     print "got response for " + str(len(trainResponse.json()['d'])) + " updates"
     
     updatedTrains = []
@@ -50,11 +54,16 @@ class TrainController:
     for removal in trainsForRemoval:
       del self.trains[removal]
 
-  def updateLoop (self):
-    while True:
+  def run(self):
+    while not self.exit.is_set():
       self.updateTrains()
-      self._q.put(self.trains)
+      try:
+        self._q.put_nowait(self.trains)
+      except:
+        print "queue is full"
       time.sleep(5)
+    print "Process exited"
 
-  def run (self):
-    multiprocessing.Process(target=self.updateLoop).start()
+  def shutdown(self):
+    print "Shutdown initiated"
+    self.exit.set()
