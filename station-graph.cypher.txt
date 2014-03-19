@@ -97,7 +97,7 @@ CREATE (Rudme:STATION {name:'Rudme', UIC: '8600564'})
 CREATE (Kværndrup:STATION {name:'Kværndrup', UIC: '8600565'})
 CREATE (Pederstrup:STATION {name:'Pederstrup', UIC: '8600562'})
 CREATE (Ringe:STATION {name:'Ringe', UIC: '8600563'})
-CREATE (HøjbyFyn:STATION {name:'Højby Fyn', UIC: '8600560'})
+CREATE (Højby:STATION {name:'Højby', UIC: '8600560'})
 CREATE (Årslev:STATION {name:'Årslev', UIC: '8600561'})
 CREATE (Vangede:STATION {name:'Vangede', UIC: '8600689'})
 CREATE (Emdrup:STATION {name:'Emdrup', UIC: '8600688'})
@@ -411,3 +411,40 @@ CREATE
   (Humlebæk)     - [:TRACK {line:'kystbanen'}] -> (Espergærde),
   (Espergærde)   - [:TRACK {line:'kystbanen'}] -> (Snekkersten),
   (Snekkersten)  - [:TRACK {line:'kystbanen'}] -> (Helsingør)
+
+
+
+// Svendborg Banen
+
+CREATE
+  (Svendborg)     - [:TRACK {line:'svendborgbanen'}] - > (SvendborgVest),
+  (SvendborgVest) - [:TRACK {line:'svendborgbanen'}] - > (StenstrupSyd),
+  (StenstrupSyd)  - [:TRACK {line:'svendborgbanen'}] - > (Stenstrup),
+  (Stenstrup)     - [:TRACK {line:'svendborgbanen'}] - > (Kværndrup),
+  (Kværndrup)     - [:TRACK {line:'svendborgbanen'}] - > (Rudme),
+  (Rudme)         - [:TRACK {line:'svendborgbanen'}] - > (Ringe),
+  (Ringe)         - [:TRACK {line:'svendborgbanen'}] - > (Pederstrup),
+  (Pederstrup)    - [:TRACK {line:'svendborgbanen'}] - > (Årslev),
+  (Årslev)        - [:TRACK {line:'svendborgbanen'}] - > (Højby),
+  (Højby)         - [:TRACK {line:'svendborgbanen'}] - > (Hjallese),
+  (Hjallese)      - [:TRACK {line:'svendborgbanen'}] - > (FruensBøge),
+  (FruensBøge)    - [:TRACK {line:'svendborgbanen'}] - > (OdenseSygehus),
+  (OdenseSygehus) - [:TRACK {line:'svendborgbanen'}] - > (Odense)
+
+CREATE
+  (Odense)        - [:TRACK {line:'svendborgbanen'}] - > (OdenseSygehus),
+  (OdenseSygehus) - [:TRACK {line:'svendborgbanen'}] - > (FruensBøge),
+  (FruensBøge)    - [:TRACK {line:'svendborgbanen'}] - > (Hjallese),
+  (Hjallese)      - [:TRACK {line:'svendborgbanen'}] - > (Højby),
+  (Højby)         - [:TRACK {line:'svendborgbanen'}] - > (Årslev),
+  (Årslev)        - [:TRACK {line:'svendborgbanen'}] - > (Pederstrup),
+  (Pederstrup)    - [:TRACK {line:'svendborgbanen'}] - > (Ringe),
+  (Ringe)         - [:TRACK {line:'svendborgbanen'}] - > (Rudme),
+  (Rudme)         - [:TRACK {line:'svendborgbanen'}] - > (Kværndrup),
+  (Kværndrup)     - [:TRACK {line:'svendborgbanen'}] - > (Stenstrup),
+  (Stenstrup)     - [:TRACK {line:'svendborgbanen'}] - > (StenstrupSyd),
+  (StenstrupSyd)  - [:TRACK {line:'svendborgbanen'}] - > (SvendborgVest),
+  (SvendborgVest) - [:TRACK {line:'svendborgbanen'}] - > (Svendborg)
+
+
+

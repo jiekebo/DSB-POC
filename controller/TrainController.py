@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Queue import Full
 import multiprocessing
 import time
@@ -9,9 +11,6 @@ from model.Train import Train
 
 
 REGIONAL_TRAINS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$filter=TrainType ne 'S-tog'"
-DANISH_STATIONS = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Station()?$filter=CountryCode eq '86'"
-INCIDENT_TO_CEN = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$filter=StationUic eq '8600626' and TrainType ne 'S-tog'"
-
 HEADERS = {'Accept': 'application/json'}
 
 
@@ -51,10 +50,14 @@ class TrainController(multiprocessing.Process):
                                 train['MinutesToDeparture'], train['DepartureDelay'], train['Cancelled'])
             updatedTrains.append(trainObject.trainNumber)
             try:
-                self.trains[trainObject.trainNumber][trainObject.id] = trainObject
+                self.trains[trainObject.trainNumber][trainObject.scheduledArrival] = trainObject
             except KeyError as e:
                 self.trains[trainObject.trainNumber] = {}
-                self.trains[trainObject.trainNumber][trainObject.id] = trainObject
+                self.trains[trainObject.trainNumber][trainObject.scheduledArrival] = trainObject
+
+        for train in self.trains:
+            currentTrainList = self.trains[train]
+            #sorted(train, key=lambda entry: entry.scheduledArrival)
 
         print "total trains " + str(len(self.trains))
         trainsForRemoval = list(set(self.trains.keys()) - set(updatedTrains))
