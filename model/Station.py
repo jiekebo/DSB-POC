@@ -1,10 +1,10 @@
 class Station:
-    def __init__(self, uic, name, abbreviation, countryName, countryCode):
+    def __init__(self, uic, name, abbreviation, country_name, country_code):
         self.uic = uic
         self.name = name
         self.abbreviation = abbreviation
-        self.countryName = countryName
-        self.countryCode = countryCode
+        self.country_name = country_name
+        self.country_code = country_code
         self.trains = []
 
     def addTrain(self, train):

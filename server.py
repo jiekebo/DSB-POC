@@ -2,12 +2,14 @@
 # -*- coding: utf-8 -*-
 
 import multiprocessing
+import json
 import sys
 
 from py2neo import neo4j
 
 from controller.TrainController import TrainController
 from controller.SocketServer import SocketServer
+from model.Track import Track
 
 queue = multiprocessing.Queue(1)
 trainController = TrainController(queue)
@@ -37,33 +39,48 @@ def neo(queue):
         trains = queue.get()
 
         for train in trains.iteritems():
-            trainNumber = train[0]
-            trainStops = train[1]
+            train_number = train[0]
+            train_stops = train[1]
 
-            for stop in trainStops.iteritems():
-                if stop[1].destinationID == 8600551 or stop[1].destinationID == 8600512:
-                    print "Stops for train " + trainNumber + ":"
-                    sortedStopTimes = trainStops.keys()
-                    sortedStopTimes.sort()
+            first_station = get_first_station(train_stops)
+            destination = train_stops.itervalues().next().destination_uic
 
-                    query = query_string.format(trainStops[sortedStopTimes[0]].stationUic, stop[1].destinationID)
-                    neoResult = neo4j.CypherQuery(graph_db, query).execute()
+            track = Track()
+            track.train = train_number
 
-                    if neoResult.data:
-                        nodes = neoResult.data[0].p.nodes
-                        print nodes
-                        for stop in trainStops.values():
-                            print stop.stationUic
+            if destination == 8600551 or destination == 8600512:
+                result = get_shortest_path(first_station, destination)
+
+                if result.data:
+                    """
+                    print train_number
+                    print train_stops
+                    print result.data
+                    """
+                    for node in result.data[0].p.nodes:
+                        node_properties = node.get_properties()
+                        node_uic = node_properties['UIC']
+                        try:
+                            train = train_stops[node_uic]
+                            node_properties['time'] = train.scheduled_arrival
+                            track.stations.append(node_properties)
+                        except KeyError as e:
+                            track.stations.append(node_properties)
+                    for relation in result.data[0].p.relationships:
+                        start = relation.start_node.get_properties()['UIC']
+                        end = relation.end_node.get_properties()['UIC']
+                        track.edges.append({"start": start, "end": end})
+                    print json.dumps(track.__dict__, indent=4)
 
 
+def get_shortest_path(start, stop):
+    query = query_string.format(start, stop)
+    return neo4j.CypherQuery(graph_db, query).execute()
 
-#                    for time in sortedStopTimes:
-#                        station = trainStops[time]
-#                        print station
-#
-#                    for r in neoResult:
-#                        for node in r.p.nodes:
-#                            print node['UIC'] + " " + node['name']
+
+def get_first_station(stations):
+    sorted_stations = sorted(stations.iteritems(), key=lambda x: x[1].scheduled_arrival)
+    return sorted_stations[0][0]
 
 
 if __name__ == '__main__':
