@@ -24,6 +24,14 @@ def signalHandler(sig, frame):
     8600512
     """
 
+query_string = """
+MATCH (source:STATION {{ UIC:"{}" }}),(target:STATION {{ UIC:"{}" }}),
+p = shortestPath((source)-[*]-(target))
+RETURN p
+"""
+graph_db = neo4j.GraphDatabaseService()
+
+
 def neo(queue):
     while True:
         trains = queue.get()
@@ -37,23 +45,25 @@ def neo(queue):
                     print "Stops for train " + trainNumber + ":"
                     sortedStopTimes = trainStops.keys()
                     sortedStopTimes.sort()
-                    for time in sortedStopTimes:
-                        station = trainStops[time]
-                        print station
 
-                    graph_db = neo4j.GraphDatabaseService()
-                    query_string = """
-                    MATCH (source:STATION {{ UIC:"{}" }}),(target:STATION {{ UIC:"{}" }}),
-                    p = shortestPath((source)-[*]-(target))
-                    RETURN p
-                    """.format(trainStops[sortedStopTimes[0]].stationUic, stop[1].destinationID)
-                    result = neo4j.CypherQuery(graph_db, query_string).execute()
-                    for r in result:
-                        print type(r)  # r is a py2neo.util.Record object
-                        print type(r.p)  # p is a py2neo.neo4j.Path object
-                        print r.p
-                        #for node in r.p.nodes:
-                        #  print node['UIC']
+                    query = query_string.format(trainStops[sortedStopTimes[0]].stationUic, stop[1].destinationID)
+                    neoResult = neo4j.CypherQuery(graph_db, query).execute()
+
+                    if neoResult.data:
+                        nodes = neoResult.data[0].p.nodes
+                        print nodes
+                        for stop in trainStops.values():
+                            print stop.stationUic
+
+
+
+#                    for time in sortedStopTimes:
+#                        station = trainStops[time]
+#                        print station
+#
+#                    for r in neoResult:
+#                        for node in r.p.nodes:
+#                            print node['UIC'] + " " + node['name']
 
 
 if __name__ == '__main__':
