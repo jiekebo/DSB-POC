@@ -44,7 +44,7 @@ class WebSocketHandler(websocket.WebSocketHandler):
             for client in self.clients:
                 try:
                     #pdb.set_trace()
-                    self.write_message("hullo")
+                    self.write_message(message)
                 except:
                     print "Message could not be written"
 

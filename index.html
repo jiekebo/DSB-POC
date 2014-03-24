@@ -16,7 +16,8 @@
                 };
                 ws.onmessage = function (evt) { 
                     var received_msg = evt.data;
-                    console.log(received_msg);
+                    var obj = JSON.parse(received_msg);
+                    console.log(obj);
                 };
                 ws.onclose = function() { 
                     alert("Connection is closed...");
