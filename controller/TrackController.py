@@ -45,11 +45,6 @@ class TrackController(multiprocessing.Process):
                 result = self._get_shortest_path(first_station, destination)
 
                 if result.data:
-                    """
-                    print train_number
-                    print train_stops
-                    print result.data
-                    """
                     for node in result.data[0].p.nodes:
                         node_properties = node.get_properties()
                         node_uic = node_properties['UIC']
@@ -63,7 +58,7 @@ class TrackController(multiprocessing.Process):
                         start = relation.start_node.get_properties()['UIC']
                         end = relation.end_node.get_properties()['UIC']
                         track.edges.append({"start": start, "end": end})
-                    tracks.append(json.dumps(track.__dict__))
+                    tracks.append(track.__dict__)
         return json.dumps(tracks)
 
 
