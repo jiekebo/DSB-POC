@@ -10,7 +10,7 @@ define("port", default=8888, help="run on the given port", type=int)
 class IndexHandler(web.RequestHandler):
     @web.asynchronous
     def get(self):
-        self.render("../index.html")
+        self.render("../webapp/index.html")
 
 
 class WebSocketHandler(websocket.WebSocketHandler):
@@ -51,8 +51,8 @@ class SocketServer(multiprocessing.Process, websocket.WebSocketHandler):
         multiprocessing.Process.__init__(self)
         self.exit = multiprocessing.Event()
         self.app = web.Application([
-            (r'/', IndexHandler),
             (r'/ws', WebSocketHandler, dict(queue=queue)),
+            (r'/(.*)', IndexHandler)
         ])
 
     def run(self):
@@ -63,5 +63,4 @@ class SocketServer(multiprocessing.Process, websocket.WebSocketHandler):
         loop.start()
 
     def shutdown(self):
-        print "Shutdown initiated"
         ioloop.IOLoop.instance().stop()

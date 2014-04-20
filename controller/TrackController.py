@@ -82,5 +82,4 @@ class TrackController(multiprocessing.Process):
         print "Process exited"
 
     def shutdown(self):
-        print "Shutdown initiated"
         self.exit.set()
