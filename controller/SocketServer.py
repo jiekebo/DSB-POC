@@ -7,12 +7,6 @@ from tornado.ioloop import PeriodicCallback
 define("port", default=8888, help="run on the given port", type=int)
 
 
-class IndexHandler(web.RequestHandler):
-    @web.asynchronous
-    def get(self):
-        self.render("../webapp/index.html")
-
-
 class WebSocketHandler(websocket.WebSocketHandler):
     def initialize(self, queue):
         self.clients = dict()
@@ -51,8 +45,7 @@ class SocketServer(multiprocessing.Process, websocket.WebSocketHandler):
         multiprocessing.Process.__init__(self)
         self.exit = multiprocessing.Event()
         self.app = web.Application([
-            (r'/ws', WebSocketHandler, dict(queue=queue)),
-            (r'/(.*)', IndexHandler)
+            (r'/ws', WebSocketHandler, dict(queue=queue))
         ])
 
     def run(self):
