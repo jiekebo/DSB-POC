@@ -1,9 +1,13 @@
-node_modules
-data
+
 .DS_Store
 *.pyc
 *.iml
 *.ipr
 *.iws
 .idea/
-bower_components/
+
+node_modules
+bower_components
+
+main.js
+main.js.map
