@@ -5,6 +5,7 @@ var coffeelint = require('gulp-coffeelint');
 var changed = require('gulp-changed');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var bowerFiles = require('gulp-bower-files');
 
 var express = require('express');
 var livereload = require('gulp-livereload');
@@ -40,6 +41,12 @@ gulp.task('coffee', function() {
     .pipe(livereload( server ))
 });
 
+gulp.task('bower', function() {
+  bowerFiles()
+    .pipe(concat('lib.js'))
+    .pipe(gulp.dest("public"));
+});
+
 gulp.task('express', function() {
   var app = express();
   app.use(require('connect-livereload')());
@@ -47,7 +54,7 @@ gulp.task('express', function() {
   app.listen(options.EXPRESS_PORT);
 });
 
-gulp.task('default', ['coffee', 'express'], function () {
+gulp.task('default', ['bower', 'coffee', 'express'], function () {
   server.listen( options.LIVE_RELOAD_PORT , function (err) {
     if (err) {
       return console.log(err)

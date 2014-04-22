@@ -9,5 +9,6 @@
 node_modules
 bower_components
 
+lib.js
 main.js
 main.js.map
